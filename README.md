@@ -1,73 +1,47 @@
+## 🏗️ Project Structure
 
-# LangChain Documentation Helper
+- `my_main.py`: Main Streamlit application file
+- `my_ingestion.py`: Script for ingesting Quran text into Pinecone vector store
+- `backend/my_core.py`: Core functionality for LangChain integration
+- `.env`: Environment variables configuration
 
-A repository for learning LangChain by building a generative ai application.
+## 💻 Usage
 
-This is a web application is using a Pinecone as a vectorsotre and answers questions about LangChain 
-(sources from LangChain official documentation). 
+1. Start the application using `streamlit run my_main.py`
+2. The application will open in your default web browser
+3. Use the sidebar to customize your user profile
+4. Enter your questions about the Quran in the chat interface
+5. View answers with source citations and chat history
 
+## 🔍 How It Works
 
+1. **Data Ingestion** (`my_ingestion.py`):
+   - Loads the Quran text from a file
+   - Splits text into chunks using RecursiveCharacterTextSplitter
+   - Embeds chunks using OpenAI's text-embedding-3-small model
+   - Stores vectors in Pinecone
 
-![Logo](https://github.com/emarco177/documentation-helper/blob/main/static/banner.gif)
-[![udemy](https://img.shields.io/badge/LangChain%20Udemy%20Course-%2412.99-green)](https://www.udemy.com/course/langchain/?couponCode=LANGCHAINCD8C0B4060)
+2. **Backend Processing** (`my_core.py`):
+   - Uses LangChain's retrieval chain for question answering
+   - Implements history-aware retrieval for context-aware responses
+   - Integrates with OpenAI's ChatGPT for generating responses
 
-## Tech Stack
-Client: Streamlit
+3. **Frontend Interface** (`my_main.py`):
+   - Provides a Streamlit-based user interface
+   - Manages user profiles and chat history
+   - Displays responses with source citations
 
-Server Side: LangChain 🦜🔗
+## ⚠️ Important Notes
 
-Vectorstore: Pinecone 🌲
+- Ensure your OpenAI API key has sufficient credits
+- The application requires an active internet connection
+- The Quran text file should be placed at the specified path in `my_ingestion.py`
+- Make sure to have sufficient Pinecone vector store capacity
 
-## Environment Variables
+## 🤝 Contributing
 
-To run this project, you will need to add the following environment variables to your .env file
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-`PINECONE_API_KEY`
-`OPENAI_API_KEY`
+## 📄 License
 
-## Run Locally
-
-Clone the project
-
-```bash
-  git clone https://github.com/emarco177/documentation-helper.git
-```
-
-Go to the project directory
-
-```bash
-  cd documentation-helper
-```
-
-Download LangChain Documentation
-```bash
-  mkdir langchain-docs
-  wget -r -A.html -P langchain-docs  https://api.python.langchain.com/en/latest
-```
-
-Install dependencies
-
-```bash
-  pipenv install
-```
-
-Start the flask server
-
-```bash
-  streamlit run main.py
-```
-
-
-## Running Tests
-
-To run tests, run the following command
-
-```bash
-  pipenv run pytest .
-```
-
-
-## 🔗 Links
-[![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://www.udemy.com/course/langchain/?referralCode=D981B8213164A3EA91AC)
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/eden-marco/)
-[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://www.udemy.com/user/eden-marco/)
+[Add your license information here]
