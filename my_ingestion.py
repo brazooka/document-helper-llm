@@ -13,7 +13,7 @@ embeddings = OpenAIEmbeddings(api_key=os.getenv("OPENAI_API_KEY"), model="text-e
 def ingest_docs():
     
     #loader = ReadTheDocsLoader("/Users/felipe/Development/en.ahmedali.txt")
-    loader = TextLoader("/Users/felipe/Development/en.ahmedali.txt")
+    loader = TextLoader("./bible.txt")
 
     raw_documents = loader.load()
     print(f"loaded {len(raw_documents)} documents")
@@ -27,7 +27,7 @@ def ingest_docs():
         doc.metadata.update({"source": new_url})
 
     print(f"Going to add {len(documents)} to Pinecone")
-    PineconeVectorStore.from_documents(documents, embeddings, index_name="quran-index")
+    PineconeVectorStore.from_documents(documents, embeddings, index_name=os.getenv("PINECONE_INDEX_NAME"))
 
     print("Loading to vedtor store done")
 

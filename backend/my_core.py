@@ -12,7 +12,7 @@ load_dotenv()
 
 
 #INDEX_NAME = "langchain-docs-index"
-INDEX_NAME = "quran-index"
+INDEX_NAME = os.getenv("PINECONE_INDEX_NAME")
 
 def run_llm(query:str, chat_history: List[Any] = []) -> List[Any]:
     embeddings = OpenAIEmbeddings(model="text-embedding-3-small")

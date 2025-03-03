@@ -94,7 +94,7 @@ with st.sidebar:
     st.session_state.user_email = new_email
 
 # Main content area
-st.title("🦜 LangChain Ask the Quran Helper")
+st.title("🦜 Ask the Bible and the Quran")
 
 # Initialize chat states
 if 'something' not in st.session_state:
